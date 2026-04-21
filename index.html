@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>(function(s){s.dataset.zone='10834757',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+    <meta name="monetag" content="53497745fde28311abe8dd1fedf229d9">
+    <script src='//libtl.com/sdk.js' data-zone='10719300' data-sdk='show_10719300'></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Reload Gems Pro - Earn Crypto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+    <!-- TELEGRAM WEB APP SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        @keyframes float { 0%,100%{transform:translateY(0px)}50%{transform:translateY(-8px)}}
+        @keyframes glowPulse { 0%,100%{box-shadow:0 0 5px rgba(139,92,246,0.3)}50%{box-shadow:0 0 20px rgba(139,92,246,0.6)}}
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .view-page { display: none; min-height: 100vh; padding-bottom: 90px; }
+        .active-view { display: block; animation: slideIn 0.3s ease; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .nav-item { flex: 1; text-align: center; color: #94a3b8; transition: 0.3s; cursor: pointer; }
+        .nav-item.active-nav { color: #8b5cf6; text-shadow: 0 0 8px rgba(139,92,246,0.5); }
+        .card-btn { background: linear-gradient(135deg, rgba(30,27,75,0.9), rgba(15,12,45,0.95)); backdrop-filter: blur(10px); border-radius: 28px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.3); text-align: center; cursor: pointer; border: 1px solid rgba(139,92,246,0.4); transition: all 0.2s; }
+        .card-btn:active { transform: scale(0.97); background: linear-gradient(135deg, rgba(139,92,246,0.3), rgba(79,70,229,0.4)); }
+        .choice-btn { width: 100%; background: #1e1b3a; border: 1px solid #4c1d95; padding: 15px; border-radius: 20px; margin-bottom: 10px; font-weight: bold; transition: 0.2s; cursor: pointer; color: white; }
+        .choice-btn:active { background: #8b5cf6; border-color: #c084fc; transform: scale(0.98); }
+        .premium-badge { background: linear-gradient(135deg, #f59e0b, #ec4899); color: white; font-size: 10px; padding: 2px 12px; border-radius: 30px; margin-left: 8px; display: inline-block; }
+        .toast { position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%); background: #1e1b3a; border: 1px solid #8b5cf6; color: white; padding: 12px 24px; border-radius: 40px; z-index: 10001; font-size: 14px; font-weight: 500; box-shadow: 0 10px 25px rgba(0,0,0,0.5); animation: fadeInUp 0.3s ease; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateX(-50%) translateY(20px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+        .ad-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 20000; display: flex; align-items: center; justify-content: center; flex-direction: column; backdrop-filter: blur(12px); }
+        .timer-circle { width: 110px; height: 110px; border-radius: 50%; background: conic-gradient(#8b5cf6 0deg, #1e1b3a 0deg); display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: bold; color: white; margin: 20px auto; }
+        .notification-bell { position: relative; cursor: pointer; }
+        .badge-dot { position: absolute; top: -5px; right: -8px; background-color: #ef4444; color: white; font-size: 10px; font-weight: bold; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .notification-panel { position: fixed; top: 70px; right: 15px; width: 280px; background: #1e1b3a; border-radius: 24px; box-shadow: 0 20px 35px rgba(0,0,0,0.5); z-index: 300; display: none; max-height: 380px; overflow-y: auto; border: 1px solid #8b5cf6; }
+        .notification-item { padding: 12px; border-bottom: 1px solid #4c1d95; font-size: 13px; color: #e2e8f0; }
+        .clickable { cursor: pointer; transition: all 0.1s ease; }
+        .clickable:active { opacity: 0.7; transform: scale(0.97); }
+        .copy-btn { background: #8b5cf6; color: white; padding: 12px 20px; border-radius: 40px; font-weight: bold; transition: 0.2s; cursor: pointer; }
+        .copy-btn:active { transform: scale(0.97); background: #7c3aed; }
+        .blocked-overlay, .internet-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.97); z-index: 999999; display: flex; align-items: center; justify-content: center; flex-direction: column; backdrop-filter: blur(12px); }
+        .bottom-nav-spacer { height: 80px; width: 100%; }
+        .ad-overlay.no-click { pointer-events: none !important; }
+        .ad-overlay .cancel-btn { pointer-events: auto !important; }
+        .method-btn { 
+            background: #1e1b3a; 
+            border: 1px solid #4c1d95; 
+            transition: all 0.2s ease; 
+            cursor: pointer; 
+            padding: 12px; 
+            border-radius: 12px; 
+            color: #cbd5e1; 
+            font-weight: 600;
+            text-align: center;
+        }
+        .method-btn.active-method { 
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed); 
+            border-color: #c084fc; 
+            color: white; 
+            box-shadow: 0 0 12px rgba(139,92,246,0.5);
+        }
+        .pro-gradient-bg { background: radial-gradient(circle at 10% 20%, #0f0c2a, #05030f); }
+        .balance-card { background: linear-gradient(135deg, #1e1b4b, #2e1a6e); border: 1px solid rgba(139,92,246,0.5); border-radius: 2rem; }
+        input, input::placeholder { color: #cbd5e1; }
+        input { background: #1a1635; border-color: #4c1d95; border-radius: 1rem; padding: 1rem; }
+        input:focus { border-color: #8b5cf6; outline: none; }
+        .bg-dashed { background: #1a1635; }
+        .pulse-dot {
+            width: 8px; height: 8px; background-color: #4ade80; border-radius: 50%; display: inline-block;
+            box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7);
+            animation: pulse-green 2s infinite;
+        }
+        @keyframes pulse-green {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(74, 222, 128, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+        }
+        .checkbox-custom { width: 18px; height: 18px; accent-color: #8b5cf6; margin-right: 8px; cursor: pointer; }
+        .terms-link { color: #8b5cf6; text-decoration: underline; cursor: pointer; font-weight: 500; }
+        .withdrawal-card {
+            background: #1a1635;
+            border-radius: 1rem;
+            margin-bottom: 0.75rem;
+            padding: 1rem;
+            border-left: 3px solid #8b5cf6;
+        }
+      .footer-container {
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+    .copyright {
+    margin: 0;
+    font-size: 14px;
+    color: #4169e1;
+}
+  .footer-container1 {
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+    .copyright1 {
+    margin: 0;
+    font-size: 14px;
+    color: #4169e1;
+}    
+      .social-icon-btn {
+            background: #1e1b3a;
+            border: 1px solid #4c1d95;
+            border-radius: 2rem;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .social-icon-btn:active {
+            transform: scale(0.96);
+            background: #8b5cf6;
+        }
+        .profile-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #8b5cf6;
+            box-shadow: 0 0 15px rgba(139,92,246,0.5);
+            background: #1e1b3a;
+        }
+        .leaderboard-photo {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid #8b5cf6;
+            background: #1e1b3a;
+        }
+        .top-three-photo {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #f59e0b;
+            margin: 0 auto 5px;
+            background: #1e1b3a;
+        }
+        .profile-initial-placeholder {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+            color: white;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body class="pro-gradient-bg font-sans text-white">
+
+<!-- LOADING SCREEN -->
+<div id="loading-screen" class="fixed inset-0 z-[99999] bg-[#05030f] flex flex-col items-center justify-center overflow-hidden">
+    <div class="absolute w-[320px] h-[320px] bg-purple-600/20 blur-3xl rounded-full animate-pulse"></div>
+    <div class="absolute bottom-16 w-[220px] h-[220px] bg-indigo-600/20 blur-3xl rounded-full animate-pulse"></div>
+    <div class="relative z-10 flex flex-col items-center">
+        <div class="w-36 h-36 md:w-40 md:h-40 flex items-center justify-center">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyjjWwnYWfoXMNNLThoWo2lnmGbg8oFhQNp0V_BxRKxjohwure3K_UYuaI3RrruoftXIJ-h0fDoUIQxNhPAJoVKnKzDX1eDpsE-e2WwFtfe3QjFqTi8zRMRByjBipMfuMF3XT6wHi_QudMAWGSvbmq6i8gpVnMuwK12tt4dGen4C06t5s7IvuGuM1RKHBb/s320/IMG_20260408_164004.png" alt="Logo" class="w-full h-full object-contain drop-shadow-[0_0_25px_rgba(139,92,246,0.8)] animate-float">
+        </div>
+        <p id="loading-text" class="mt-8 text-purple-400 text-base md:text-lg font-bold tracking-wider">Loading Secure Platform</p>
+        <div class="mt-4 w-56 md:w-72 h-2 bg-white/10 rounded-full overflow-hidden border border-purple-500/30">
+            <div id="loading-bar" class="h-full w-0 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500 rounded-full transition-all duration-300"></div>
+        </div>
+        <p id="loading-status" class="mt-3 text-xs text-gray-400">Initializing...</p>
+    </div>
+</div>
+
+<!-- INTERNET OVERLAY -->
+<div id="internet-overlay" class="internet-overlay hidden">
+    <div class="bg-[#1e1b3a] rounded-3xl p-8 text-center max-w-md mx-4 border border-purple-500">
+        <div class="text-6xl mb-4">🌐</div>
+        <h2 class="text-2xl font-black text-purple-400 mb-3">No Internet Connection</h2>
+        <p class="text-gray-300 mb-4">Please check your network connection and try again.</p>
+        <button onclick="checkInternetAndReload()" class="bg-purple-600 text-white px-6 py-3 rounded-xl font-bold clickable">Retry</button>
+    </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="app-container" class="hidden">
+    <div id="blocked-overlay" class="blocked-overlay hidden">
+        <div class="bg-[#1e1b3a] rounded-3xl p-8 text-center max-w-md mx-4 border border-red-500">
+            <div class="text-6xl mb-4">🚫</div>
+            <h2 class="text-2xl font-black text-red-400 mb-3">Account Blocked</h2>
+            <p class="text-gray-300 mb-4">Your account has been blocked by admin. Please contact support for more information.</p>
+            <button onclick="location.reload()" class="bg-gray-700 text-white px-4 py-2 rounded-lg text-sm clickable w-full">Reload</button>
+        </div>
+    </div>
+
+    <!-- HOME VIEW -->
+    <div id="home-view" class="view-page active-view p-5">
+        <div class="flex items-center justify-between mb-6 px-2">
+            <div><h2 id="welcome-name" class="text-2xl font-black text-white">Hello!</h2><h4 class="text-lg font-semibold text-purple-300">Welcome Back!</h4></div>
+            <div class="relative notification-bell clickable" onclick="toggleNotificationPanel()"><div class="w-12 h-12 bg-[#1e1b3a] rounded-2xl flex items-center justify-center text-2xl border border-purple-500/50">🔔</div><span id="notification-badge" class="badge-dot hidden">0</span></div>
+        </div>
+        <div id="notification-panel" class="notification-panel"><div class="p-3 font-bold border-b border-purple-500 text-purple-400">Notifications</div><div id="notifications-list" class="text-sm">No new notifications</div></div>
+      
+        <div class="balance-card text-white p-6 rounded-[2rem] mb-8 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/20 rounded-full blur-2xl"></div>
+            <p class="opacity-80 text-xs font-black tracking-[0.2em] uppercase mb-2">Total Balance</p>
+            <div class="flex items-center gap-3 mb-3">
+                <span class="text-5xl">💰</span>
+                <h2 class="text-5xl font-black tracking-tight"><span id="coins">0</span></h2>
+                <span class="text-2xl font-semibold opacity-80">Coins</span>
+            </div>
+            <div class="flex items-center gap-2 mt-4 pt-2 border-t border-white/20">
+                <span class="text-2xl">💎</span>
+                <span class="text-xl font-bold"><span id="gems">0</span> Gems</span>
+            </div>
+        </div>
+       
+        <div class="mb-3"><p class="text-xs font-black tracking-[0.25em] uppercase text-purple-300">🔥 Earn Tasks</p></div>
+        <div class="grid grid-cols-2 gap-4 mb-5">
+            <div onclick="openSuperOffer()" class="card-btn clickable"><div class="bg-purple-500/20 w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-3 text-2xl">⚡</div><p class="font-bold text-white">Super Offer</p><p id="super-offer-text" class="text-xs text-purple-300">20 Gems → 100 Coins</p></div>
+            <div onclick="startMathGame()" class="card-btn clickable"><div class="text-3xl mb-2">🎮</div><p class="font-bold text-white">Math Game</p><p id="math-game-text" class="text-xs text-purple-300">+1 Gem on correct</p></div>
+        </div>
+        <div class="mb-3 mt-1"><p class="text-xs font-black tracking-[0.25em] uppercase text-purple-300">🎁 Bonuses</p></div>
+        <div class="grid grid-cols-2 gap-4 mb-6">
+            <div onclick="switchPage('giveaway-view')" class="card-btn clickable"><div class="text-3xl mb-2">🎁</div><p class="font-bold text-white">Giveaway</p></div>
+            <div onclick="dailyCheckin()" class="card-btn clickable"><div class="text-3xl mb-2">📆</div><p class="font-bold text-white">Daily Checkin</p><p id="daily-checkin-text" class="text-xs text-purple-300">+50 Coins</p></div>
+        </div>
+        <div onclick="switchPage('refer-view')" class="bg-[#1e1b3a] p-6 rounded-3xl border border-purple-500/30 flex items-center justify-between cursor-pointer clickable"><div><p class="font-black text-white">👥 Invite Friends</p><p id="invite-text" class="text-xs text-purple-300">Get 100 coins per refer</p></div><div class="text-2xl text-purple-400">➔</div></div>
+        <div class="bottom-nav-spacer"></div>
+    </div>
+
+    <!-- MATH GAME VIEW -->
+    <div id="math-game-view" class="view-page p-6">
+        <div class="flex items-center justify-between mb-8"><button onclick="switchPage('home-view')" class="bg-[#1e1b3a] p-3 rounded-2xl font-bold text-purple-400 clickable border border-purple-500/30">← Home</button><div class="font-black text-white">Math Quiz</div></div>
+        <div class="bg-[#1e1b3a] p-8 rounded-[2.5rem] shadow-xl text-center border border-purple-500/30"><p class="text-purple-300 font-bold text-xs mb-4">CHOOSE CORRECT ANSWER</p><h2 id="math-quest" class="text-5xl font-black text-white mb-10">0 + 0</h2><div id="math-options" class="grid grid-cols-2 gap-3 w-full"></div></div>
+        <div class="bottom-nav-spacer"></div>
+    </div>
+
+    <!-- GIVEAWAY -->
+    <div id="giveaway-view" class="view-page p-6"><button onclick="switchPage('home-view')" class="mb-6 bg-[#1e1b3a] p-3 rounded-2xl font-bold text-purple-400 clickable border border-purple-500/30">← Back</button><div class="bg-[#1e1b3a] p-10 rounded-[2.5rem] shadow-xl text-center border border-purple-500/30"><div class="text-5xl mb-6">🎁</div><h2 class="text-2xl font-black text-white mb-2">Giveaway Code</h2><p class="text-purple-300 text-sm mb-8">Enter the secret code from our Telegram</p><input type="text" id="gv-code" class="w-full bg-[#1a1635] p-5 rounded-2xl text-center font-bold mb-6 outline-none border border-purple-500/50 uppercase text-white" placeholder="ENTER CODE"><button onclick="claimGiveaway()" class="w-full bg-purple-600 text-white py-5 rounded-2xl font-black shadow-lg clickable">CLAIM REWARD</button></div></div>
+  
+    <div id="super-offer-modal" class="fixed inset-0 bg-black/80 z-[150] hidden items-center justify-center p-5"><div class="bg-[#1e1b3a] rounded-3xl p-6 w-full max-w-sm text-center border border-purple-500"><h3 class="text-2xl font-black text-purple-400">💎 Super Offer</h3><p id="super-offer-modal-text" class="text-gray-300 my-3">Convert 20 Gems → 100 Coins</p><p class="text-purple-400 text-3xl font-black my-2"><span id="modal-gems">0</span> Gems</p><button onclick="convertGemsWithAd()" class="bg-green-600 text-white w-full py-3 rounded-xl font-bold mt-3 clickable">Tap Ad to Convert</button><button onclick="closeSuperOffer()" class="mt-3 text-gray-400 text-sm clickable">Cancel</button></div></div>
+
+    <div id="refer-view" class="view-page p-6 text-center"><button onclick="switchPage('home-view')" class="mb-4 bg-[#1e1b3a] p-3 rounded-2xl font-bold text-purple-400 clickable border border-purple-500/30">← Back</button><h2 class="text-2xl font-bold text-white mb-2">Refer & Earn</h2><p id="refer-desc" class="text-purple-300 mb-8">Invite friends and get 100 coins!</p><div class="border-2 border-dashed border-purple-500 p-6 rounded-2xl mb-6 bg-[#1a1635]"><p class="text-sm text-purple-300">Your Referral Code</p><h3 id="ref-code" class="text-2xl font-black tracking-widest text-purple-400">LOADING</h3></div><div class="mb-4 text-left bg-[#1a1635] p-3 rounded-xl"><span class="font-bold text-white">👥 Total Referrals:</span> <span id="total-refs" class="text-purple-300">0</span></div><div class="mb-4 text-left bg-[#1a1635] p-3 rounded-xl"><span class="font-bold text-white">💰 Commission Rate:</span> <span id="commission-rate" class="text-purple-300">10%</span></div><button onclick="copyReferralCode()" class="copy-btn w-full">📋 Copy Referral Code</button><div class="mt-4"><input type="text" id="enter-ref-code" placeholder="Enter friend's referral code" class="w-full bg-[#1a1635] border border-purple-800 p-3 rounded-xl mb-2 text-white"><button onclick="submitReferralCode()" class="w-full bg-green-600 text-white py-2 rounded-xl font-bold clickable">Submit Referral Code</button></div></div>
+  
+    <div id="profile-view" class="view-page p-6"><h2 class="text-2xl font-black text-white mb-6">👤 My Profile</h2><div class="bg-[#1e1b3a] p-8 rounded-[2rem] shadow-sm mb-6 text-center border border-purple-500/30"><img id="profile-photo-img" class="profile-photo mx-auto mb-4" src="" alt="Profile Photo" style="display: none;"><div id="profile-initial" class="profile-initial-placeholder mx-auto mb-4">U</div><h3 id="p-name" class="text-xl font-black text-white">User Name</h3><p id="p-id" class="text-xs text-purple-300 font-bold mt-1">ID: LOADING</p></div><div onclick="openEditProfile()" class="bg-[#1e1b3a] p-5 rounded-3xl border border-purple-500/30 flex items-center justify-between cursor-pointer clickable mb-4"><div><p class="font-black text-white">✏️ Edit Profile</p><p class="text-xs text-purple-300">Change your name</p></div><div class="text-2xl text-purple-400">→</div></div><div onclick="switchPage('history-view'); loadHistory();" class="bg-[#1e1b3a] p-5 rounded-3xl border border-purple-500/30 flex items-center justify-between cursor-pointer clickable mb-4"><div><p class="font-black text-white">📜 Earning History</p><p class="text-xs text-purple-300">See all rewards & withdrawals</p></div><div class="text-2xl text-purple-400">→</div></div>
+      <div onclick="switchPage('follow-us-view')" class="bg-[#1e1b3a] p-5 rounded-3xl border border-purple-500/30 flex items-center justify-between cursor-pointer clickable mb-4"><div><p class="font-bold text-white">📱 Follow Us</p><p class="text-xs text-purple-300">Join our social community</p></div><div class="text-2xl text-purple-400">→</div></div>
+     
+      <div onclick="openExternalPage('about')" class="bg-[#1e1b3a] p-5 rounded-3xl border border-purple-500/30 flex items-center justify-between cursor-pointer clickable mb-4"><div><p class="font-bold text-white">ℹ️ About Us</p></div><div class="text-xl text-purple-400">›</div></div><div onclick="openExternalPage('contact')" class="bg-[#1e1b3a] p-5 rounded-3xl border border-purple-500/30 flex items-center justify-between cursor-pointer clickable mb-4"><div><p class="font-bold text-white">📧 Contact Us</p></div><div class="text-xl text-purple-400">›</div></div><div onclick="openExternalPage('privacy')" class="bg-[#1e1b3a] p-5 rounded-3xl border border-purple-500/30 flex items-center justify-between cursor-pointer clickable mb-4"><div><p class="font-bold text-white">🔒 Privacy Policy</p></div><div class="text-xl text-purple-400">›</div></div><div onclick="openExternalPage('terms')" class="bg-[#1e1b3a] p-5 rounded-3xl border border-purple-500/30 flex items-center justify-between cursor-pointer clickable mb-4"><div><p class="font-bold text-white">📜 Terms of Service</p></div><div class="text-xl text-purple-400">›</div></div>
+      <footer class="footer-container"><p class="copyright">ReloadGems V1.0.0</p></footer>
+      <div class="bottom-nav-spacer"></div>
+  </div>
+
+    <!-- WALLET VIEW -->
+    <div id="wallet-view" class="view-page p-6"><h2 class="text-2xl font-black text-white mb-6">💳 Select Payment Method</h2><div class="bg-[#1e1b3a] p-5 rounded-3xl shadow-sm mb-4 border border-purple-500/30"><p class="font-bold text-white mb-2">Select Network</p><div class="grid grid-cols-3 gap-3"><button onclick="setCryptoMethod('USDT (TRC20)', this)" class="method-btn active-method" id="btn-usdt">💎 USDT</button><button onclick="setCryptoMethod('LTC', this)" class="method-btn" id="btn-ltc">⚡ LTC</button><button onclick="setCryptoMethod('BNB', this)" class="method-btn" id="btn-bnb">🔶 BNB</button></div></div><div class="bg-[#1e1b3a] p-5 rounded-3xl shadow-sm border border-purple-500/30"><input type="number" id="withdraw-amount" placeholder="Amount (Min 2000 Coins)" class="w-full bg-[#1a1635] border border-purple-800 p-4 rounded-2xl mb-3 text-white"><input type="text" id="withdraw-address" placeholder="Wallet Address" class="w-full bg-[#1a1635] border border-purple-800 p-4 rounded-2xl mb-4 text-white"><button onclick="submitCryptoWithdrawal()" class="w-full bg-purple-600 text-white py-4 rounded-2xl font-bold clickable">💸 Request Withdrawal</button></div>
+      <footer class="footer-container1"><p class="copyright1">1000 coins = 0.10$</p></footer>
+      <div class="mt-6"><h3 class="font-bold mb-3 text-white">📜 Withdrawal History</h3><div id="withdrawal-history-list" class="bg-[#1e1b3a] rounded-2xl divide-y divide-purple-800 max-h-80 overflow-auto shadow-sm border border-purple-500/30"><div class="text-center text-gray-400 py-6">Loading withdrawal history...</div></div></div><div class="bottom-nav-spacer"></div></div>
+
+    <div id="leaderboard-view" class="view-page p-6"><div class="flex items-center justify-between mb-8 px-2"><h2 class="text-2xl font-black text-white">🏆 Top Players</h2>
+                <div class="flex items-center gap-1.5 bg-black/20 px-2 py-0.5 rounded-full border border-white/5">
+                    <div class="pulse-dot"></div>
+                    <span class="text-[9px] text-slate-300 font-mono"><span id="active-users-count">0</span> Online</span>
+                </div>
+      <div class="bg-purple-600 p-2 rounded-xl">🏆</div></div><div id="personal-rank" class="bg-[#1e1b3a] p-3 rounded-xl text-center mb-4 border border-purple-500/30"><span class="text-gray-300">Your Rank:</span> <span id="user-rank" class="font-black text-purple-400">--</span></div><div id="top-three" class="flex justify-around items-end mb-10 h-44"></div><div id="rank-list" class="bg-[#1e1b3a] rounded-2xl divide-y divide-purple-800"></div><div class="bottom-nav-spacer"></div></div>
+  
+    <div id="history-view" class="view-page p-6"><button onclick="switchPage('profile-view')" class="bg-[#1e1b3a] p-3 rounded-2xl font-bold text-purple-400 mb-4 clickable border border-purple-500/30">← Back</button><h2 class="text-xl font-black text-white mb-4">📜 Earning History</h2><div id="history-list" class="bg-[#1e1b3a] rounded-2xl divide-y divide-purple-800"></div></div>
+  
+  <div id="follow-us-view" class="view-page p-6">
+    <div class="flex items-center gap-4 mb-6">
+        <button onclick="switchPage('profile-view')" class="bg-[#1e1b3a] p-3 rounded-2xl font-bold text-purple-400 clickable border border-purple-500/30">← Back</button>
+        <h2 class="text-2xl font-black text-white">📱 Follow Us</h2>
+    </div>
+    <div class="bg-[#1e1b3a] rounded-3xl p-6 shadow-xl border border-purple-500/30">
+        <p class="text-center text-gray-300 mb-8">Stay connected with us on social media. Get latest updates, giveaways and news!</p>
+        <div id="dynamic-follow-links" class="grid grid-cols-1 gap-4">
+            <div class="text-center text-purple-300 py-4">Loading social links...</div>
+        </div>
+        <p class="text-center text-gray-500 text-xs mt-8">Tap any icon to open link in new tab</p>
+    </div>
+    <div class="bottom-nav-spacer"></div>
+</div>
+     
+    <div id="edit-profile-modal" class="fixed inset-0 z-[80] bg-black/80 hidden items-center justify-center p-5"><div class="bg-[#1e1b3a] w-full max-w-md rounded-[2rem] p-6 border border-purple-500"><h3 class="text-xl font-black text-white mb-4">Edit Profile</h3><input id="edit-name" type="text" placeholder="New Name" class="w-full bg-[#1a1635] border border-purple-800 p-4 rounded-2xl mb-3 text-white"><button onclick="saveProfileChanges()" class="w-full bg-purple-600 text-white py-3 rounded-2xl font-bold clickable">Save</button><button onclick="closeEditProfile()" class="w-full mt-2 text-gray-400 clickable">Cancel</button></div></div>
+
+    <nav class="fixed bottom-0 left-0 right-0 bg-[#0f0c2a]/95 backdrop-blur-lg h-20 flex items-center justify-around border-t border-purple-500/30 z-50">
+        <div onclick="tabClick('home-view', this)" class="nav-item active-nav clickable"><p class="text-xl">🏠</p><span class="text-[10px] font-bold">HOME</span></div>
+        <div onclick="tabClick('refer-view', this)" class="nav-item clickable"><p class="text-xl">👥</p><span class="text-[10px] font-bold">REFER</span></div>
+        <div onclick="tabClick('leaderboard-view', this); loadLeaderboard();" class="nav-item clickable"><p class="text-xl">🏆</p><span class="text-[10px] font-bold">RANK</span></div>
+        <div onclick="tabClick('wallet-view', this); loadWithdrawals();" class="nav-item clickable"><p class="text-xl">💳</p><span class="text-[10px] font-bold">WALLET</span></div>
+        <div onclick="tabClick('profile-view', this)" class="nav-item clickable"><p class="text-xl">👤</p><span class="text-[10px] font-bold">PROFILE</span></div>
+    </nav>
+</div>
+
+<!-- AD OVERLAY -->
+<div id="ad-overlay" class="ad-overlay hidden no-click"><div class="text-center"><div class="text-6xl mb-3">📺</div><p id="ad-title" class="text-white text-xl font-bold mb-4">Loading advertisement...</p><div id="ad-timer-circle" class="timer-circle">0s</div><p id="ad-timer-text" class="text-white mt-3">Please wait, do not close</p><button onclick="cancelAd()" class="mt-6 bg-red-600 px-6 py-2 rounded-full text-white clickable cancel-btn">Cancel</button></div></div>
+
+<script>
+    const firebaseConfig = { apiKey: "AIzaSyDRL-koCpag6W4UwAGCVQXULWzvCvkdbR0", authDomain: "gems-buck.firebaseapp.com", projectId: "gems-buck", storageBucket: "gems-buck.firebasestorage.app", messagingSenderId: "875704415799", appId: "1:875704415799:web:f9b4d682bd6afcae6331b2" };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    let currentUserData = { coins: 0, gems: 0, name: "", referrals: 0, history: [], withdrawals: [], referralCode: "", isBlocked: false, photoUrl: null, telegramId: null };
+    let selectedCryptoMethod = "USDT (TRC20)";
+    let isAdPlaying = false;
+    let appSettings = { dailyCheckinCoins: 50, mathGameGems: 1, superGemsRequired: 20, superCoinsReward: 100, minWithdrawal: 2000, referralBonus: 100, referralCommission: 10 };
+    let blockUnsubscribe = null;
+    let loadingComplete = false;
+    const tg = window.Telegram.WebApp;
+    if(tg) tg.expand();
+
+    // Get Telegram user photo URL - THIS IS THE KEY FIX
+    function getTelegramPhotoUrl() {
+        if (tg && tg.initDataUnsafe && tg.initDataUnsafe.user) {
+            // Telegram provides photo_url in the user object when available
+            if (tg.initDataUnsafe.user.photo_url) {
+                return tg.initDataUnsafe.user.photo_url;
+            }
+            // Fallback: Construct using Telegram ID (works if user has public photo)
+            const userId = tg.initDataUnsafe.user.id;
+            if (userId) {
+                return `https://t.me/i/userpic/320/${userId}.jpg`;
+            }
+        }
+        return null;
+    }
+
+    function getDeviceFingerprint() { let canvas = document.createElement('canvas'); let ctx = canvas.getContext('2d'); ctx.fillStyle = "#f60"; ctx.fillRect(0, 0, 100, 50); ctx.fillStyle = "#069"; ctx.fillText("RG", 2, 15); let fingerprint = navigator.userAgent + screen.width + screen.height + screen.colorDepth + navigator.language + (new Date()).getTimezoneOffset() + canvas.toDataURL(); return btoa(encodeURIComponent(fingerprint)).substring(0, 48); }
+    const deviceFingerprint = getDeviceFingerprint();
+    
+    async function checkDeviceMultiAccount(uid) { try { let devicesSnap = await db.collection("devices").where("fingerprint", "==", deviceFingerprint).get(); if (!devicesSnap.empty) { for (let doc of devicesSnap.docs) { if (doc.data().uid !== uid) { showToast("❌ Multiple accounts not allowed on this device!", true); await auth.signOut(); setTimeout(() => location.reload(), 1500); return false; } } } await db.collection("devices").doc(uid).set({ fingerprint: deviceFingerprint, uid: uid, lastSeen: new Date() }, { merge: true }); return true; } catch(e) { return true; } }
+
+    function checkInternet() { if (!navigator.onLine) { document.getElementById('internet-overlay').classList.remove('hidden'); return false; } else { document.getElementById('internet-overlay').classList.add('hidden'); return true; } }
+    function checkInternetAndReload() { if (navigator.onLine) location.reload(); else showToast("Still offline", true); }
+    window.addEventListener('online', () => { checkInternet(); if(auth.currentUser && currentUserData && !currentUserData.isBlocked) document.getElementById('app-container').classList.remove('hidden'); });
+    window.addEventListener('offline', () => { document.getElementById('internet-overlay').classList.remove('hidden'); });
+
+    function showToast(msg, isErr=false){ let t=document.createElement('div'); t.className='toast'; t.innerText=msg; t.style.background=isErr?'#dc2626':'#10b981'; document.body.appendChild(t); setTimeout(()=>t.remove(),3000); }
+    function updateUI(){ document.getElementById('coins').innerText = currentUserData.coins; document.getElementById('gems').innerText = currentUserData.gems; document.getElementById('modal-gems').innerText = currentUserData.gems; }
+    function switchPage(id){ document.querySelectorAll('.view-page').forEach(v=>v.classList.remove('active-view')); document.getElementById(id).classList.add('active-view'); }
+    function tabClick(id,el){ document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active-nav')); el.classList.add('active-nav'); switchPage(id); }
+
+    function updateActiveUsersCount() { const activeRef = db.collection('users').where('lastSeen', '>', new Date(Date.now() - 5*60*1000)); activeRef.get().then(snap => { document.getElementById('active-users-count').innerText = snap.size; }).catch(()=>{ document.getElementById('active-users-count').innerText = '?'; }); }
+    setInterval(updateActiveUsersCount, 30000);
+    if(auth.currentUser) setInterval(()=>{ db.collection("users").doc(auth.currentUser.uid).update({ lastSeen: new Date() }).catch(()=>{}); }, 60000);
+
+    function showStrictRewardedAd(onReward, durationSec = 15) { if (isAdPlaying) { showToast("Ad already playing", true); return; } if (!checkInternet()) return; isAdPlaying = true; let overlay = document.getElementById('ad-overlay'); overlay.classList.remove('hidden'); overlay.classList.add('no-click'); let timerDiv = document.getElementById('ad-timer-circle'); let txt = document.getElementById('ad-timer-text'); let timeLeft = durationSec; let adCompleted = false; let timerFinished = false; let rewardGiven = false; const handleVisibilityChange = () => { if (document.hidden && !rewardGiven) { rewardGiven = true; clearInterval(interval); overlay.classList.add('hidden'); isAdPlaying = false; showToast("⚠️ Ad cancelled!", true); document.removeEventListener('visibilitychange', handleVisibilityChange); } }; document.addEventListener('visibilitychange', handleVisibilityChange); let interval = setInterval(() => { if (timeLeft > 0) { timeLeft--; timerDiv.innerText = timeLeft + 's'; let percent = ((durationSec - timeLeft) / durationSec) * 360; timerDiv.style.background = `conic-gradient(#8b5cf6 ${percent}deg, #1e1b3a 0deg)`; txt.innerText = `Please wait ${timeLeft} seconds`; } if (timeLeft <= 0 && !timerFinished) { timerFinished = true; txt.innerText = "Ad completed! Processing..."; if (adCompleted) finishAd(); } }, 1000); let finishAd = () => { if (rewardGiven) return; rewardGiven = true; clearInterval(interval); overlay.classList.add('hidden'); isAdPlaying = false; document.removeEventListener('visibilitychange', handleVisibilityChange); if (onReward) onReward(); }; if (window.show_10719300) { window.show_10719300().then(() => { adCompleted = true; if (timerFinished) finishAd(); }).catch(() => { clearInterval(interval); overlay.classList.add('hidden'); isAdPlaying = false; showToast("Ad failed", true); }); } else { setTimeout(() => { adCompleted = true; if (timerFinished) finishAd(); }, durationSec * 1000); } }
+    function cancelAd() { if (isAdPlaying) { document.getElementById('ad-overlay').classList.add('hidden'); isAdPlaying = false; showToast("Ad cancelled", true); } }
+
+    let currentMath = 0;
+    function startMathGame(){ switchPage('math-game-view'); generateMath(); }
+    function generateMath(){ let a=Math.floor(Math.random()*20)+1,b=Math.floor(Math.random()*20)+1; currentMath=a+b; document.getElementById('math-quest').innerText=`${a} + ${b}`; let opts=[currentMath,currentMath+2,currentMath-1,currentMath+3]; opts.sort(()=>Math.random()-0.5); let container=document.getElementById('math-options'); container.innerHTML=''; opts.forEach(opt=>{let btn=document.createElement('button'); btn.innerText=opt; btn.className="choice-btn clickable"; btn.onclick=()=>checkMath(opt); container.appendChild(btn);}); }
+    function checkMath(ans){ if(ans===currentMath){ showStrictRewardedAd(()=>{ currentUserData.gems += appSettings.mathGameGems; db.collection("users").doc(auth.currentUser.uid).update({gems:currentUserData.gems}); addHistory("Math Game", appSettings.mathGameGems, `+${appSettings.mathGameGems} Gem`); updateUI(); showToast(`+${appSettings.mathGameGems} Gem!`); generateMath(); }, 15); } else { showToast("Wrong answer!", true); generateMath(); } }
+    function dailyCheckin(){ let today=new Date().toDateString(); if(currentUserData.lastCheckin===today) return showToast("Already checked in!",true); showStrictRewardedAd(()=>{ currentUserData.coins += appSettings.dailyCheckinCoins; currentUserData.lastCheckin=today; db.collection("users").doc(auth.currentUser.uid).update({coins:currentUserData.coins,lastCheckin:today}); addHistory("Daily Checkin", appSettings.dailyCheckinCoins, `+${appSettings.dailyCheckinCoins} Coins`); updateUI(); }, 15); }
+    function openSuperOffer(){ document.getElementById('super-offer-modal').classList.remove('hidden'); document.getElementById('super-offer-modal').classList.add('flex'); }
+    function closeSuperOffer(){ document.getElementById('super-offer-modal').classList.add('hidden'); document.getElementById('super-offer-modal').classList.remove('flex'); }
+    function convertGemsWithAd(){ if(currentUserData.gems < appSettings.superGemsRequired) return showToast(`Need ${appSettings.superGemsRequired} Gems`,true); showStrictRewardedAd(()=>{ currentUserData.gems -= appSettings.superGemsRequired; currentUserData.coins += appSettings.superCoinsReward; db.collection("users").doc(auth.currentUser.uid).update({gems:currentUserData.gems,coins:currentUserData.coins}); addHistory("Super Offer", appSettings.superCoinsReward, `${appSettings.superGemsRequired} Gems → ${appSettings.superCoinsReward} Coins`); updateUI(); closeSuperOffer(); }, 120); }
+  
+    async function claimGiveaway() { 
+    let code = document.getElementById('gv-code').value.trim().toUpperCase(); 
+    if (!code) return; 
+    let promo = await db.collection("promos").doc(code).get(); 
+    if (!promo.exists || !promo.data().active) { showToast("Invalid code", true); return; }
+    if (currentUserData.claimedPromos?.includes(code)) { showToast("You have already claimed this giveaway code!", true); return; }
+    const lastClaimTime = currentUserData.lastGiveawayClaim || 0;
+    const timeSinceLastClaim = Date.now() - lastClaimTime;
+    if (timeSinceLastClaim < 60000) { const remainingSeconds = Math.ceil((60000 - timeSinceLastClaim) / 1000); showToast(`Please wait ${remainingSeconds} seconds before claiming another giveaway!`, true); return; }
+    let reward = promo.data().coins || 500; 
+    showStrictRewardedAd(async () => { 
+        const userRef = db.collection("users").doc(auth.currentUser.uid);
+        await db.runTransaction(async (transaction) => {
+            const userDoc = await transaction.get(userRef);
+            const userData = userDoc.data();
+            if (userData.claimedPromos?.includes(code)) throw new Error("Already claimed");
+            transaction.update(userRef, { coins: firebase.firestore.FieldValue.increment(reward), claimedPromos: firebase.firestore.FieldValue.arrayUnion(code), lastGiveawayClaim: Date.now() });
+        });
+        currentUserData.coins += reward;
+        if (!currentUserData.claimedPromos) currentUserData.claimedPromos = [];
+        currentUserData.claimedPromos.push(code);
+        currentUserData.lastGiveawayClaim = Date.now();
+        updateUI(); 
+        addHistory("Giveaway", reward, `${reward} Coins`); 
+        showToast(`+${reward} Coins!`); 
+        document.getElementById('gv-code').value = '';
+    }, 15); 
+}
+  
+    async function loadAppSettings() { try { let settingsDoc = await db.collection("admin").doc("settings").get(); let settings = settingsDoc.data() || {}; appSettings = { dailyCheckinCoins: settings.dailyCheckinCoins || 50, mathGameGems: settings.mathGameGems || 1, superGemsRequired: settings.superGemsRequired || 20, superCoinsReward: settings.superCoinsReward || 100, minWithdrawal: settings.minWithdrawal || 2000, referralBonus: settings.referralBonus || 100, referralCommission: settings.referralCommission || 10 }; updateUISettings(); } catch(e){} }
+    function updateUISettings(){ document.getElementById('math-game-text').innerText = `+${appSettings.mathGameGems} Gem on correct`; document.getElementById('daily-checkin-text').innerText = `+${appSettings.dailyCheckinCoins} Coins`; document.getElementById('super-offer-text').innerText = `${appSettings.superGemsRequired} Gems → ${appSettings.superCoinsReward} Coins`; document.getElementById('super-offer-modal-text').innerText = `Convert ${appSettings.superGemsRequired} Gems → ${appSettings.superCoinsReward} Coins`; document.getElementById('invite-text').innerText = `Get ${appSettings.referralBonus} coins per refer`; document.getElementById('refer-desc').innerText = `Invite friends and get ${appSettings.referralBonus} coins!`; document.getElementById('commission-rate').innerText = appSettings.referralCommission + "%"; let withdrawInput = document.getElementById('withdraw-amount'); if (withdrawInput) withdrawInput.placeholder = `Amount (Min ${appSettings.minWithdrawal} Coins)`; }
+  
+    function copyReferralCode(){ let code=currentUserData.referralCode; navigator.clipboard.writeText(code); showToast("Referral code copied: "+code); }
+    async function submitReferralCode(){ let enteredCode=document.getElementById('enter-ref-code').value.trim().toUpperCase(); if(!enteredCode) return showToast("Please enter a referral code", true); if(enteredCode===currentUserData.referralCode) return showToast("You cannot use your own referral code", true); if(currentUserData.referredBy) return showToast("You have already used a referral code", true); let referrerSnap=await db.collection("users").where("referralCode","==",enteredCode).get(); if(referrerSnap.empty) return showToast("Invalid referral code", true); let referralBonus=appSettings.referralBonus; let referrer=referrerSnap.docs[0]; await referrer.ref.update({ referrals:firebase.firestore.FieldValue.increment(1), coins:firebase.firestore.FieldValue.increment(referralBonus) }); await db.collection("users").doc(auth.currentUser.uid).update({ referredBy:enteredCode, coins:firebase.firestore.FieldValue.increment(referralBonus) }); currentUserData.coins+=referralBonus; currentUserData.referredBy=enteredCode; updateUI(); addHistory("Referral Bonus", referralBonus, `Used referral code: ${enteredCode}`); showToast(`Referral code applied! +${referralBonus} Coins`); document.getElementById('enter-ref-code').value=""; loadLeaderboard(); }
+  
+    function setCryptoMethod(m, btn){ selectedCryptoMethod = m; document.querySelectorAll('.method-btn').forEach(b => { b.classList.remove('active-method'); b.style.background = '#1e1b3a'; b.style.color = '#cbd5e1'; }); btn.classList.add('active-method'); btn.style.background = 'linear-gradient(135deg, #8b5cf6, #7c3aed)'; btn.style.color = 'white'; btn.style.borderColor = '#c084fc'; btn.style.boxShadow = '0 0 12px rgba(139,92,246,0.5)'; }
+  
+    async function submitCryptoWithdrawal(){ let amount=parseInt(document.getElementById('withdraw-amount').value); let addr=document.getElementById('withdraw-address').value.trim(); if(!addr) return showToast("Wallet address required", true); let minWithdraw=appSettings.minWithdrawal; if(isNaN(amount)||amount<minWithdraw) return showToast(`Minimum ${minWithdraw} coins`, true); if(amount>currentUserData.coins) return showToast("Insufficient balance", true); currentUserData.coins-=amount; await db.collection("users").doc(auth.currentUser.uid).update({ coins:currentUserData.coins }); let withdrawalData={ uid:auth.currentUser.uid, method:selectedCryptoMethod, address:addr, amount:amount, status:"Pending", date:new Date().toISOString() }; await db.collection("withdrawals").add(withdrawalData); addHistory("Withdraw", -amount, `${amount} coins to ${selectedCryptoMethod}`); updateUI(); await loadWithdrawals(); loadHistory(); document.getElementById('withdraw-amount').value=""; document.getElementById('withdraw-address').value=""; showToast("Withdrawal request sent!"); }
+  
+    async function loadWithdrawals(){ if(!auth.currentUser) return; let div=document.getElementById('withdrawal-history-list'); if(!div) return; try{ let snap=await db.collection("withdrawals").where("uid","==",auth.currentUser.uid).get(); if(snap.empty){ div.innerHTML='<div class="text-center text-gray-400 py-6">📭 No withdrawal requests yet</div>'; return; } let withdrawals=[]; snap.forEach(doc=>withdrawals.push(doc.data())); withdrawals.sort((a,b)=>new Date(b.date)-new Date(a.date)); let html=''; withdrawals.forEach(data=>{ let date=data.date?new Date(data.date).toLocaleString():new Date().toLocaleString(); let statusColor=data.status==='Pending'?'bg-yellow-600/30 text-yellow-300 border border-yellow-500/40':'bg-green-600/30 text-green-300 border border-green-500/40'; let maskedAddress=data.address&&data.address.length>12?data.address.substring(0,8)+'...'+data.address.substring(data.address.length-6):data.address; html+=`<div class="p-4 border-b border-purple-800 hover:bg-purple-900/20 transition"><div class="flex justify-between items-center mb-2"><div class="flex items-center gap-2"><span class="font-bold text-purple-300">${data.method}</span><span class="text-xs px-2 py-1 rounded-full ${statusColor}">${data.status}</span></div><span class="font-bold text-red-400">-${data.amount} Coins</span></div><div class="text-xs text-gray-400 break-all mt-1 font-mono">📤 ${maskedAddress}</div><div class="text-xs text-gray-500 mt-2">📅 ${date}</div></div>`; }); div.innerHTML=html; } catch(error){ div.innerHTML='<div class="text-center text-red-400 py-6">⚠️ Error loading history</div>'; } }
+  
+    async function addHistory(type, amount, note) { if(!currentUserData.history) currentUserData.history = []; currentUserData.history.unshift({type, amount, note, time: new Date().toLocaleString()}); if(currentUserData.history.length > 50) currentUserData.history.pop(); await db.collection("users").doc(auth.currentUser.uid).update({ history: currentUserData.history }); loadHistory(); }
+    function loadHistory() { let hist = currentUserData.history || []; let container = document.getElementById('history-list'); if(hist.length===0) { container.innerHTML='<div class="p-5 text-center text-gray-400">No history</div>'; return; } container.innerHTML = hist.map(h => `<div class="p-4 flex justify-between border-b border-purple-800"><div><p class="font-bold text-white">${h.type}</p><p class="text-xs text-purple-300">${h.time}</p></div><span class="${h.amount>0?'text-green-400':'text-red-400'}">${h.amount>0?'+':''}${h.amount}</span></div>`).join(''); }
+  
+    async function loadLeaderboard() { 
+    try { 
+        let users = await db.collection("users").get(); 
+        let players = []; 
+        users.forEach(doc => { 
+            let data = doc.data();
+            players.push({ 
+                id: doc.id, 
+                name: data.name || "User", 
+                coins: data.coins || 0,
+                photoUrl: data.photoUrl || null,
+                telegramId: data.telegramId || null
+            }); 
+        }); 
+        players.sort((a, b) => b.coins - a.coins); 
+        let top20Players = players.slice(0, 20); 
+        let topDiv = document.getElementById('top-three'); 
+        let rankDiv = document.getElementById('rank-list'); 
+        if (!topDiv || !rankDiv) return; 
+        
+        topDiv.innerHTML = ''; 
+        if(top20Players[1]) topDiv.innerHTML += `<div class="text-center"><img src="${top20Players[1].photoUrl || 'https://ui-avatars.com/api/?background=8b5cf6&color=fff&name='+encodeURIComponent(top20Players[1].name)}" class="top-three-photo" onerror="this.src='https://ui-avatars.com/api/?background=8b5cf6&color=fff&name='+encodeURIComponent('${top20Players[1].name}')"><p class="text-xs text-white mt-1">${top20Players[1].name.substring(0,10)}</p><div class="bg-gray-600 h-12 w-16 mx-auto rounded-t-xl"></div></div>`; 
+        if(top20Players[0]) topDiv.innerHTML += `<div class="text-center"><img src="${top20Players[0].photoUrl || 'https://ui-avatars.com/api/?background=f59e0b&color=fff&name='+encodeURIComponent(top20Players[0].name)}" class="top-three-photo w-14 h-14" onerror="this.src='https://ui-avatars.com/api/?background=f59e0b&color=fff&name='+encodeURIComponent('${top20Players[0].name}')"><p class="text-xs font-bold text-white mt-1">${top20Players[0].name.substring(0,10)}</p><div class="bg-gradient-to-br from-yellow-500 to-amber-600 h-20 w-16 mx-auto rounded-t-xl"></div></div>`; 
+        if(top20Players[2]) topDiv.innerHTML += `<div class="text-center"><img src="${top20Players[2].photoUrl || 'https://ui-avatars.com/api/?background=ea580c&color=fff&name='+encodeURIComponent(top20Players[2].name)}" class="top-three-photo" onerror="this.src='https://ui-avatars.com/api/?background=ea580c&color=fff&name='+encodeURIComponent('${top20Players[2].name}')"><p class="text-xs text-white mt-1">${top20Players[2].name.substring(0,10)}</p><div class="bg-orange-600 h-8 w-16 mx-auto rounded-t-xl"></div></div>`; 
+        
+        rankDiv.innerHTML = top20Players.map((p, idx) => { 
+            let isCur = p.id === auth.currentUser?.uid; 
+            return `<div class="flex justify-between p-4 ${isCur ? 'bg-purple-800/50 border-l-4 border-purple-400' : ''}"><div class="flex gap-3 items-center"><span class="font-bold text-gray-400">${idx+1}</span><img src="${p.photoUrl || 'https://ui-avatars.com/api/?background=8b5cf6&color=fff&name='+encodeURIComponent(p.name)}" class="leaderboard-photo" onerror="this.src='https://ui-avatars.com/api/?background=8b5cf6&color=fff&name='+encodeURIComponent('${p.name}')"><span class="text-white">${p.name.substring(0,18)}</span></div><span class="font-black text-purple-400">${p.coins} coins</span></div>`; 
+        }).join(''); 
+        
+        let userRank = players.findIndex(p => p.id === auth.currentUser?.uid) + 1;
+        let userCoins = players.find(p => p.id === auth.currentUser?.uid)?.coins || 0;
+        let userName = players.find(p => p.id === auth.currentUser?.uid)?.name || "User";
+        let userPhoto = players.find(p => p.id === auth.currentUser?.uid)?.photoUrl;
+        document.getElementById('user-rank').innerHTML = userRank ? `<span class="font-black text-purple-400">#${userRank}</span>` : `<span class="text-gray-400">--</span>`;
+        if (userRank > 20 && auth.currentUser?.uid) { rankDiv.innerHTML += `<div class="border-t border-gray-700 mt-2 pt-2"><div class="flex justify-between p-4 bg-purple-800/50 border-l-4 border-purple-400"><div class="flex gap-3 items-center"><span class="font-bold text-gray-400">${userRank}</span><img src="${userPhoto || 'https://ui-avatars.com/api/?background=8b5cf6&color=fff&name='+encodeURIComponent(userName)}" class="leaderboard-photo" onerror="this.src='https://ui-avatars.com/api/?background=8b5cf6&color=fff&name='+encodeURIComponent('${userName}')"><span class="text-white">${userName.substring(0,18)}</span></div><span class="font-black text-purple-400">${userCoins} coins</span></div></div>`; }
+    } catch(e){ console.error(e); } 
+}
+  
+    function openEditProfile(){ document.getElementById('edit-profile-modal').classList.remove('hidden'); document.getElementById('edit-profile-modal').classList.add('flex'); document.getElementById('edit-name').value=currentUserData.name; }
+    function closeEditProfile(){ document.getElementById('edit-profile-modal').classList.add('hidden'); }
+    async function saveProfileChanges(){ let newName=document.getElementById('edit-name').value.trim(); if(newName.length<2) return; await db.collection("users").doc(auth.currentUser.uid).update({ name: newName }); currentUserData.name=newName; document.getElementById('p-name').innerText=newName; document.getElementById('welcome-name').innerHTML=`Hello, ${newName.split(' ')[0]}!`; updateProfilePhoto(); closeEditProfile(); showToast("Profile updated!"); }
+    function openExternalPage(type){ let urls={about:"https://docs.google.com/document/d/1DOd-SKq7tolvBRJ-Kz5x9FHiUDfqMuPb0rTPipLy_tM/edit?usp=drivesdk",contact:"https://docs.google.com/document/d/1Se7dU1zNisEvlzIb6kqjrFil8WiDXtq6_wKYzqibxfQ/edit?usp=drivesdk",privacy:"https://docs.google.com/document/d/1zEJFYKol3WLBIDFe-EnorLZ82EAnLvV-CV1dDVOUP2k/edit?usp=drivesdk",terms:"https://docs.google.com/document/d/1iL3nlCyh79kp8tZjDXu1ufkax34lMJSskD7VK_2gXGs/edit?usp=drivesdk"}; if(urls[type]) window.open(urls[type],"_blank"); }
+    function toggleNotificationPanel(){ let p=document.getElementById('notification-panel'); p.style.display = p.style.display==='block'?'none':'block'; }
+    function listenToNotifications(){ db.collection("adminNotifications").onSnapshot((snap)=>{ let notifs=[]; snap.forEach(d=>{ if(d.data().targetAll===true) notifs.push(d.data()); }); let badge=document.getElementById('notification-badge'); if(notifs.length>0){ badge.classList.remove('hidden'); badge.innerText=notifs.length; } else badge.classList.add('hidden'); let container=document.getElementById('notifications-list'); if(notifs.length===0) container.innerHTML='<div class="p-3 text-center text-gray-400">No new</div>'; else container.innerHTML=notifs.map(n=>`<div class="notification-item"><b>${n.title||'Update'}</b><br/><span class="text-xs">${n.message}</span></div>`).join(''); }); }
+    function listenToBlockStatus() { if (blockUnsubscribe) { blockUnsubscribe(); blockUnsubscribe = null; } if (!auth.currentUser) return; blockUnsubscribe = db.collection("users").doc(auth.currentUser.uid).onSnapshot((doc) => { if (doc.exists) { const data = doc.data(); if (data.isBlocked === true) { document.getElementById('blocked-overlay').classList.remove('hidden'); document.getElementById('app-container').classList.add('hidden'); showToast("Account blocked!", true); } else if (data.isBlocked !== true) { document.getElementById('blocked-overlay').classList.add('hidden'); if (auth.currentUser && document.getElementById('app-container')) { document.getElementById('app-container').classList.remove('hidden'); } } } }, (error) => console.error("Block listener error:", error)); }
+    
+    function hideLoadingScreen() { 
+        if(loadingComplete) return; 
+        loadingComplete = true; 
+        let loadingDiv = document.getElementById('loading-screen'); 
+        if(loadingDiv) {
+            loadingDiv.style.opacity = "0"; 
+            setTimeout(() => { 
+                if(loadingDiv) loadingDiv.style.display = "none"; 
+            }, 500);
+        }
+    }
+
+    // UPDATE PROFILE PHOTO - THIS ENSURES TELEGRAM PHOTO IS SHOWN
+    function updateProfilePhoto() {
+        const photoUrl = currentUserData.photoUrl || getTelegramPhotoUrl();
+        const profileImg = document.getElementById('profile-photo-img');
+        const profileInitial = document.getElementById('profile-initial');
+        
+        if(photoUrl && photoUrl !== 'null' && photoUrl !== 'undefined') {
+            profileImg.src = photoUrl;
+            profileImg.style.display = 'block';
+            profileInitial.style.display = 'none';
+            profileImg.onerror = function() {
+                profileImg.style.display = 'none';
+                profileInitial.style.display = 'flex';
+                if(currentUserData.name) profileInitial.innerText = currentUserData.name.charAt(0).toUpperCase();
+            };
+        } else {
+            profileImg.style.display = 'none';
+            profileInitial.style.display = 'flex';
+            if(currentUserData.name) profileInitial.innerText = currentUserData.name.charAt(0).toUpperCase();
+        }
+    }
+
+    // DIRECT TELEGRAM AUTO-LOGIN
+    let loginAttempted = false;
+    async function autoLoginWithTelegram() {
+        if(loginAttempted) return;
+        loginAttempted = true;
+        if (!tg || !tg.initDataUnsafe?.user) {
+            console.log("Waiting for Telegram WebApp...");
+            setTimeout(() => { loginAttempted = false; autoLoginWithTelegram(); }, 1000);
+            return;
+        }
+        const telegramUser = tg.initDataUnsafe.user;
+        const telegramId = telegramUser.id.toString();
+        const firstName = telegramUser.first_name || "User";
+        const lastName = telegramUser.last_name || "";
+        const fullName = (firstName + " " + lastName).trim();
+        const username = telegramUser.username || `tg_${telegramId}`;
+        const email = `${telegramId}@telegram.user`;
+        const photoUrl = telegramUser.photo_url || getTelegramPhotoUrl() || null;
+        
+        try {
+            let userCredential = await auth.signInAnonymously();
+            const uid = userCredential.user.uid;
+            const userRef = db.collection("users").doc(uid);
+            const doc = await userRef.get();
+            
+            if (!doc.exists) {
+                const referralCode = uid.substring(0, 8).toUpperCase();
+                await userRef.set({
+                    name: fullName,
+                    email: email,
+                    coins: 0,
+                    gems: 0,
+                    referrals: 0,
+                    referralCode: referralCode,
+                    history: [],
+                    isBlocked: false,
+                    telegramId: telegramId,
+                    telegramUsername: username,
+                    photoUrl: photoUrl,
+                    lastSeen: new Date(),
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+            } else {
+                await userRef.update({ lastSeen: new Date(), telegramUsername: username, photoUrl: photoUrl });
+            }
+            
+        } catch (error) {
+            console.error("Telegram auto-login error:", error);
+            setTimeout(() => { loginAttempted = false; autoLoginWithTelegram(); }, 2000);
+        }
+    }
+
+    auth.onAuthStateChanged(async (user) => { 
+        if(user){ 
+            await loadAppSettings(); 
+            if(!(await checkDeviceMultiAccount(user.uid))) { hideLoadingScreen(); return; } 
+            let doc = await db.collection("users").doc(user.uid).get(); 
+            let data = doc.data() || {}; 
+            listenToBlockStatus(); 
+            if(data.isBlocked === true){ 
+                document.getElementById('blocked-overlay').classList.remove('hidden'); 
+                document.getElementById('app-container').classList.add('hidden'); 
+                hideLoadingScreen(); 
+                return; 
+            } 
+            document.getElementById('blocked-overlay').classList.add('hidden'); 
+            document.getElementById('app-container').classList.remove('hidden'); 
+            currentUserData = {uid:user.uid, ...data, coins:data.coins||0, gems:data.gems||0, name:data.name||"User", referrals:data.referrals||0, history:data.history||[], withdrawals:data.withdrawals||[], referralCode:data.referralCode||user.uid.substring(0,8).toUpperCase(), isBlocked:data.isBlocked||false, photoUrl:data.photoUrl || null, telegramId:data.telegramId || null}; 
+            if(!data.referralCode) await db.collection("users").doc(user.uid).update({referralCode:currentUserData.referralCode}); 
+            document.getElementById('welcome-name').innerHTML = `Hello, ${currentUserData.name.split(' ')[0]}!`; 
+            document.getElementById('p-name').innerText = currentUserData.name; 
+            document.getElementById('p-id').innerText = "ID: "+user.uid.substring(0,12); 
+            updateProfilePhoto();
+            document.getElementById('ref-code').innerText = currentUserData.referralCode; 
+            document.getElementById('total-refs').innerText = currentUserData.referrals||0; 
+            updateUI(); 
+            loadHistory(); 
+            loadWithdrawals(); 
+            listenToNotifications(); 
+            updateActiveUsersCount(); 
+            setInterval(()=>{ if(auth.currentUser) db.collection("users").doc(auth.currentUser.uid).update({ lastSeen: new Date() }).catch(()=>{}); }, 45000); 
+            hideLoadingScreen(); 
+        } else { 
+            if(blockUnsubscribe) blockUnsubscribe(); 
+            autoLoginWithTelegram();
+        } 
+    });
+    
+    window.addEventListener("load",()=>{ 
+        checkInternet(); 
+        let bar=document.getElementById('loading-bar'); 
+        let prog=0; 
+        let statusText=document.getElementById('loading-status'); 
+        let int=setInterval(()=>{ 
+            prog+=Math.random()*12+6; 
+            if(prog>=100) prog=100; 
+            if(bar) bar.style.width=prog+"%"; 
+            if(prog>=70 && statusText) statusText.innerText = "Connecting to secure servers..."; 
+            if(prog>=90 && statusText) statusText.innerText = "Almost ready!"; 
+            if(prog>=100){ clearInterval(int); } 
+        }, 150); 
+        setTimeout(() => { 
+            if(!loadingComplete && statusText) statusText.innerText = "Finalizing..."; 
+        }, 3000);
+        
+        setTimeout(() => { if(!auth.currentUser) autoLoginWithTelegram(); }, 500);
+    });
+  
+    async function loadFollowLinksForUser() {
+        try {
+            const snapshot = await db.collection("followLinks").where("active", "==", true).orderBy("order", "asc").get();
+            const container = document.getElementById('dynamic-follow-links');
+            if (!container) return;
+            if (snapshot.empty) { container.innerHTML = `<div class="text-center text-gray-400 py-8"><p class="text-2xl mb-2">🔗</p><p>No social links available yet.</p><p class="text-xs mt-2">Check back later!</p></div>`; return; }
+            let html = '';
+            snapshot.forEach(doc => { const link = doc.data(); const icon = link.icon || '🔗'; const name = link.name || 'Link'; const url = link.url || '#'; html += `<div onclick="window.open('${url}', '_blank')" class="social-icon-btn flex items-center gap-4 p-4 rounded-2xl bg-[#1a1635] border border-purple-500/30 cursor-pointer hover:bg-purple-900/30 transition-all active:scale-95"><span class="text-3xl">${icon}</span><div class="flex-1 text-left"><p class="font-bold text-white">${name.replace(/[&<>]/g, function(m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; })}</p><p class="text-xs text-purple-300">Click to visit</p></div><span class="text-purple-400 text-xl">➔</span></div>`; });
+            container.innerHTML = html;
+        } catch (error) { console.error("Error loading follow links:", error); const container = document.getElementById('dynamic-follow-links'); if (container) { container.innerHTML = `<div class="text-center text-red-400 py-4">⚠️ Error loading links. Please try again later.</div>`; } }
+    }
+    const originalSwitchPage = window.switchPage || switchPage;
+    window.switchPage = function(id) { if(originalSwitchPage) originalSwitchPage(id); if (id === 'follow-us-view') { loadFollowLinksForUser(); } };
+    switchPage = window.switchPage;
+    
+    const faLink = document.createElement('link');
+    faLink.rel = 'stylesheet';
+    faLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css';
+    document.head.appendChild(faLink);
+</script>
+</body>
+</html>
