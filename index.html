@@ -1,4 +1,4 @@
-8<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <script>(function(s){s.dataset.zone='10834757',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
@@ -623,10 +623,6 @@ tg.expand();
 }
 
 
-    // 1. Initialize Telegram WebApp
-    const tg = window.Telegram.WebApp;
-    tg.expand();
-
     let vpnCheckedToday = false;
 
     // 2. Security Check Function
@@ -640,7 +636,7 @@ tg.expand();
 
         try {
             // Using ProxyCheck.io - Replace 'YOUR_KEY' with your actual key
-            const res = await fetch('https://proxycheck.io/v2/check?vpn=1&key=YOUR_KEY');
+            const res = await fetch('https://proxycheck.io/v2/check?vpn=1&key=e3811225d24253973704e8a68e656d0322c51204d43c27008c8d710e3acf12d2');
             const data = await res.json();
             const ipInfo = data[Object.keys(data)[0]];
 
